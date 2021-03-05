@@ -1,0 +1,9 @@
+# DS_Store
+.DS_Store
+
+# review directory
+review/
+
+# tester directory
+GNL_test1/
+get_next_line_test/

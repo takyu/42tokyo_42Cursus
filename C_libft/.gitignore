@@ -1,0 +1,11 @@
+# review directory
+review/
+
+# tester directory
+libft_test1/
+libft_test2/
+libft_test3/
+libft_test_ywake/
+
+# tester file
+manytest*.c
