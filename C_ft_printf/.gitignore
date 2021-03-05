@@ -1,0 +1,17 @@
+# DS_Store file
+.DS_Store
+
+# review directory
+review/
+
+# tester directory
+42TESTERS-PRINTF/
+ft_printf_test/
+pft/
+pft_2019/
+printf-tester/
+
+# tester file
+test*.c
+a.out
+
