@@ -47,8 +47,27 @@ RUN set -ex; \
 		tar -xvzf latest.tar.gz -C /var/www/html/; \
 		rm latest.tar.gz;
 
-# change owner of var/www/html*
+# change owner of var/www/html/*
 RUN chown -R www-data:www-data var/www/html/*;
+
+# Issue an SSL certificate and turn on SSL settings in nginx
+ENV SSL_PATH="etc/nginx/ssl" \
+	SSL_KEY="server.key" \
+	SSL_CSR="server.csr" \
+	SSL_CRT="server.crt"
+
+RUN set -ex; \
+		mkdir $SSL_PATH; \
+		openssl genrsa -out $SSL_PATH/$SSL_KEY 2048; \
+		openssl req -new \
+			-key $SSL_PATH/$SSL_KEY \
+			-out $SSL_PATH/$SSL_CSR \
+			-subj "/C=JP/ST=Tokyo/L=Minato-ku/O=DMM/OU=42Tokyo/CN=localhost"; \
+		openssl x509 -req \
+			-in $SSL_PATH/$SSL_CSR \
+			-days 3650 \
+			-signkey $SSL_PATH/$SSL_KEY \
+			-out $SSL_PATH/$SSL_CRT;
 
 # copy files of srcs directries
 COPY ./srcs/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
