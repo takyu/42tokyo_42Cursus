@@ -34,25 +34,41 @@ RUN set -ex; \
 
 ENV PHPMA_PATH="var/www/html/phpmyadmin" \
 	PHPMA_TAR="phpMyAdmin-5.0.2-all-languages.tar.gz"
+
 RUN set -ex; \
 		mkdir $PHPMA_PATH; \
 		wget --no-check-certificate https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz; \
 		tar -xvzf $PHPMA_TAR -C $PHPMA_PATH --strip-components=1; \
-		rm $PHPMA_TAR; \
-		chown -R www-data:www-data $PHPMA_PATH;
+		rm $PHPMA_TAR;
 
 # install wordpress
 RUN set -ex; \
 		wget --no-check-certificate https://wordpress.org/latest.tar.gz; \
 		tar -xvzf latest.tar.gz -C /var/www/html/; \
-		rm latest.tar.gz; \
-		chown -R www-data:www-data /var/www/html/wordpress;
+		rm latest.tar.gz;
+
+# change owner of var/www/html*
+RUN chown -R www-data:www-data var/www/html/*;
 
 # copy files of srcs directries
 COPY ./srcs/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./srcs/wp-config.php /var/www/html/wordpress/wp-config.php
+COPY ./srcs/default.tmpl /etc/nginx/sites-available/default.tmpl
 
-# keep move(after delete)
-CMD tail -f /dev/null
+# install entrykit
+ENV EK_TAR="entrykit_0.4.0_Linux_x86_64.tgz"
+RUN set -ex; \
+	wget --no-check-certificate https://github.com/progrium/entrykit/releases/download/v0.4.0/entrykit_0.4.0_Linux_x86_64.tgz; \
+	tar -xvzf $EK_TAR -C /bin; \
+	rm $EK_TAR; \
+	chmod +x /bin/entrykit; \
+	entrykit --symlink;
+
+# add execution authority to supervisord.conf
+RUN	chmod +x /etc/supervisor/conf.d/supervisord.conf;
+
+# exec entrypoint
+ENTRYPOINT ["render", "/etc/nginx/sites-available/default", "--", "/usr/bin/supervisord"]
 
 # Specify the port number
 EXPOSE 80 443
