@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/03/12 12:58:10 by tnagoshi          #+#    #+#              #
+#    Updated: 2021/03/12 12:58:35 by tnagoshi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # linux distribution
 FROM debian:buster
 
@@ -31,7 +43,6 @@ RUN set -ex; \
 			mysql -e "FLUSH PRIVILEGES;";
 
 # install phpmyadmin
-
 ENV PHPMA_PATH="var/www/html/phpmyadmin" \
 	PHPMA_TAR="phpMyAdmin-5.0.2-all-languages.tar.gz"
 
@@ -47,8 +58,15 @@ RUN set -ex; \
 		tar -xvzf latest.tar.gz -C /var/www/html/; \
 		rm latest.tar.gz;
 
+# copy files of wp-config.php and default.tmpl
+COPY ./srcs/wp-config.php /var/www/html/wordpress/wp-config.php
+COPY ./srcs/default.tmpl /etc/nginx/sites-available/default.tmpl
+
 # change owner of var/www/html/*
 RUN chown -R www-data:www-data var/www/html/*;
+
+# add reading and writing authority to wp-config.php
+RUN chmod 644 var/www/html/wordpress/wp-config.php;
 
 # Issue an SSL certificate and turn on SSL settings in nginx
 ENV SSL_PATH="etc/nginx/ssl" \
@@ -69,11 +87,6 @@ RUN set -ex; \
 			-signkey $SSL_PATH/$SSL_KEY \
 			-out $SSL_PATH/$SSL_CRT;
 
-# copy files of srcs directries
-COPY ./srcs/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY ./srcs/wp-config.php /var/www/html/wordpress/wp-config.php
-COPY ./srcs/default.tmpl /etc/nginx/sites-available/default.tmpl
-
 # install entrykit
 ENV EK_TAR="entrykit_0.4.0_Linux_x86_64.tgz"
 RUN set -ex; \
@@ -83,8 +96,9 @@ RUN set -ex; \
 	chmod +x /bin/entrykit; \
 	entrykit --symlink;
 
-# add execution authority to supervisord.conf
-RUN	chmod +x /etc/supervisor/conf.d/supervisord.conf;
+# copy supervisord.conf and add executing authority to supervisord.conf
+COPY ./srcs/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+RUN chmod +x etc/supervisor/conf.d/supervisord.conf;
 
 # exec entrypoint
 ENTRYPOINT ["render", "/etc/nginx/sites-available/default", "--", "/usr/bin/supervisord"]
