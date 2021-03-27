@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 18:19:54 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/27 19:09:10 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/27 20:04:23 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/27 20:04:26 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "../includes/minirt.h"
 
-/*
-** library header
-*/
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <errno.h>
-# include <math.h>
-# include <float.h>
-
-/*
-** homemade header
-*/
-
-# include "error.h"
-
-/*
-** minilbx
-*/
-
-# include "mlx.h"
-
-#endif
+void	arg_error(void)
+{
+	write(STDOUT_FILENO, ERROR, ft_strlen(ERROR));
+	ft_putendl_fd(ERROR_ARG, STDOUT_FILENO);
+	exit(1);
+}

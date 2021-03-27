@@ -20,7 +20,7 @@ int main()
 				j = 0;
 				while (j < height)
 				{
-						mlx_pixel_put(mlx, mlx_win, i, j, 127);
+						mlx_pixel_put(mlx, mlx_win, i, j, 70);
 						j++;
 				}
 				i++;

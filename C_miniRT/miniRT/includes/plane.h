@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   plane.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 18:28:31 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/24 18:28:42 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/27 18:38:35 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/27 19:11:05 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#ifndef PLANE_H
+# define PLANE_H
 
-int     main(int ac, char **av)
+typedef struct	s_plane
 {
-    if (ac != 2)
-        write(STDERR_FILENO, "error", ft_strlen("error"));
-}
+	double	x;
+	double	y;
+	double	z;
+	double	dirc_x;
+	double	dirc_y;
+	double	dirc_z;
+	char	r;
+	char	g;
+	char	b;
+}				t_plane;
+
+/*
+** analyze_plane()
+*/
+
+#endif

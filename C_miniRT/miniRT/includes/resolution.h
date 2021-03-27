@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   resolution.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 18:19:54 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/27 19:09:10 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/27 18:03:40 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/27 19:11:36 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef RESOLUTION_H
+# define RESOLUTION_H
+
+typedef struct	s_resolution
+{
+	int		x;
+	int		y;
+}				t_resolution;
 
 /*
-** library header
+** analyze_resolution()
 */
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <errno.h>
-# include <math.h>
-# include <float.h>
-
-/*
-** homemade header
-*/
-
-# include "error.h"
-
-/*
-** minilbx
-*/
-
-# include "mlx.h"
 
 #endif

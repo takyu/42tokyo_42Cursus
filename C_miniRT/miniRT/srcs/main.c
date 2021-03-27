@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 18:19:54 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/27 19:09:10 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/24 18:28:31 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/24 18:28:42 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "../includes/minirt.h"
 
-/*
-** library header
-*/
+int     main(int ac, char **av)
+{
+    int     flag_error;
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <errno.h>
-# include <math.h>
-# include <float.h>
-
-/*
-** homemade header
-*/
-
-# include "error.h"
-
-/*
-** minilbx
-*/
-
-# include "mlx.h"
-
-#endif
+    flag_error = 0;
+    // 引数のエラー出力
+    if (ac != 2 || (ac == 3 && ft_strncmp(av[2], "--save", 7) == 0))
+        arg_error();
+    // rtファイルの読み込み
+    // raycastingの開始
+    // フリーする
+    //メッセージを受け取ったら、エラー出力
+    return (0);
+}

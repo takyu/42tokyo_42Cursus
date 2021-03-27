@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   sphere.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 18:19:54 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/27 19:09:10 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/27 18:33:23 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/27 19:12:58 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef SPHERE_H
+# define SPHERE_H
+
+typedef struct	s_sphere
+{
+	double	x;
+	double	y;
+	double	z;
+	double	diameter;
+	char	r;
+	char	g;
+	char	b;
+}				t_sphere;
 
 /*
-** library header
+** analyze_sphere()
 */
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <errno.h>
-# include <math.h>
-# include <float.h>
-
-/*
-** homemade header
-*/
-
-# include "error.h"
-
-/*
-** minilbx
-*/
-
-# include "mlx.h"
 
 #endif

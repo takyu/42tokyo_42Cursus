@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ambient_light.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 18:19:54 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/27 19:09:10 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/27 18:07:37 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/27 19:03:42 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef AMBIENT_LIGHT_H
+# define AMBIENT_LIGHT_H
+
+typedef struct	s_ambient_light
+{
+	double	ratio;
+	char	r;
+	char	g;
+	char	b;
+}				t_ambient_light;
 
 /*
-** library header
+** analyze_ambient_light()
 */
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <errno.h>
-# include <math.h>
-# include <float.h>
-
-/*
-** homemade header
-*/
-
-# include "error.h"
-
-/*
-** minilbx
-*/
-
-# include "mlx.h"
 
 #endif
