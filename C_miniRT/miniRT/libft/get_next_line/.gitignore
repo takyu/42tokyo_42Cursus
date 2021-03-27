@@ -1,9 +1,0 @@
-# ignore txt file
-*.txt
-
-# leaks.c
-leakdetect.c
-leakdetect.h
-
-# main function
-main*.c
