@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   check.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 20:04:23 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/27 20:04:26 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/28 15:35:40 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/28 15:35:41 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#ifndef CHECK_H
+# define CHECK_H
 
-void	error_exit(char *s)
-{
-	printf("%s\n", ERROR);
-	printf("%s\n", s);
-	exit(1);
-}
+int		check_rt_file(char *s);
+
+#endif

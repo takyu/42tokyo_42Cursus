@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 20:04:23 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/03/27 20:04:26 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/28 14:20:29 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/28 14:20:30 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	error_exit(char *s)
+int		check_rt_file(char *s)
 {
-	printf("%s\n", ERROR);
-	printf("%s\n", s);
-	exit(1);
+	char	*tmp;
+	char	*rt;
+
+	*rt = "rt";
+	tmp = ft_substr(s, ft_strlen(s) - ft_strlen(rt), ft_strlen(rt));
+	if (!(ft_strncmp(tmp, rt, ft_strlen(rt)) == 0))
+	{
+		ft_safe_free((void **)tmp);
+		return (0);
+	}
+	ft_safe_free((void **)tmp);
+	return (1);
 }

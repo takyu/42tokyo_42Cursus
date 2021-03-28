@@ -14,7 +14,7 @@
 # define MINIRT_H
 
 /*
-** library header
+** Library header
 */
 
 # include <stdio.h>
@@ -23,17 +23,57 @@
 # include <errno.h>
 # include <math.h>
 # include <float.h>
-
-/*
-** homemade header
-*/
-
-# include "error.h"
+# include <fcntl.h>
 
 /*
 ** minilbx
 */
 
 # include "mlx.h"
+
+/*
+** Error header
+*/
+
+# include "error.h"
+
+/*
+** Check header
+*/
+
+# include "check.h"
+
+/*
+** Situation header
+*/
+
+# include "resolution.h"
+# include "ambient_light.h"
+# include "camera.h"
+# include "light.h"
+
+/*
+** Object header
+*/
+
+# include "sphere.h"
+# include "plane.h"
+# include "square.h"
+# include "cylinder.h"
+# include "triangle.h"
+
+/*
+** Strucure of status
+*/
+
+typedef struct	s_status
+{
+	t_resolution	*r;
+	t_ambient_light	*al;
+	t_camera		*c;
+	t_light			*l;
+}				t_status;
+
+void			read_rt_file(char *name, t_status *status);
 
 #endif
