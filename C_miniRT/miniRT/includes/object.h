@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safe_free.c                                     :+:      :+:    :+:   */
+/*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 22:32:55 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/02/04 22:35:43 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/29 15:22:54 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/29 15:22:58 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef OBJECT_H
+# define OBJECT_H
 
-void	ft_safe_free(void **p)
+typedef struct	s_object
 {
-	free(*p);
-	*p = NULL;
-}
+	t_sphere	sp;
+	t_plane		pl;
+	t_square	sq;
+	t_cylinder	cy;
+	t_triangle	tr;
+}				t_object;
+
+// void			analyze_object();
+
+#endif

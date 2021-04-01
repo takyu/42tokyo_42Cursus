@@ -36,6 +36,11 @@ typedef struct		s_list
 void				ft_safe_free(void **target);
 
 /*
+** ft_safe_free_2d.c
+*/
+void				ft_safe_free_2d(void ***p, int index);
+
+/*
 ***************  function of assignment  ***************
 */
 

@@ -18,6 +18,17 @@ static void	initialyze_status(t_status *s)
 	s->al = NULL;
 	s->c = NULL;
 	s->l = NULL;
+	s->obj = NULL;
+}
+
+static int	count_string_array(char **ps)
+{
+	int		i;
+
+	i = 0;
+	while (ps[i])
+		i++;
+	return (i);
 }
 
 static void	analyze_info(char *info, t_status *status)
@@ -29,24 +40,37 @@ static void	analyze_info(char *info, t_status *status)
 	arr = ft_split(info, ' ');
 	if (!arr)
 		error_exit(ERROR_MALLOC);
+	if (count_string_array(arr) == 0 || count_string_array(arr) == 1)
+		error_exit(ERROR_FORMAT_RT_FILE);
+	if (*arr == 'R')
+		analyze_resolution(&(status->r), arr);
+	else if (*arr == 'A')
+		analyze_ambient_light(&(status->al), arr);
+	else if (*arr == 'c')
+		analyze_camera(&(status->c), arr);
+	else if (*arr == 'l')
+		analyze_light(&(status->l), arr);
+	else
+		analyze_object(&(status->obj), arr);
+	ft_safe_free_2d((void ***)&arr, count_string_array(arr));
 }
 
 void		read_rt_file(char *name, t_status *status)
 {
 	char	*info;
 	int		fd;
-	int		flag_read;
+	int		res;
 
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
 		error_exit(ERROR_OPEN);
 	initialyze_status(status);
-	flag_read = 0;
-	while ((flag_read = get_next_line(fd, &info)) >= 0)
+	res = 0;
+	while ((res = get_next_line(fd, &info)) >= 0)
 	{
-		// 1行の仕様を読み込んでいく作業をする。
 		analyze_info(info, status);
-		if (flag_read == 0)
+		ft_safe_free((void **)&info);
+		if (res == 0)
 			break ;
 	}
 	close(fd);

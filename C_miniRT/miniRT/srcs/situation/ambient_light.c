@@ -1,19 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safe_free.c                                     :+:      :+:    :+:   */
+/*   ambient_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 22:32:55 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/02/04 22:35:43 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/29 15:55:09 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/29 15:55:10 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_safe_free(void **p)
-{
-	free(*p);
-	*p = NULL;
-}
+#include "../includes/minirt.h"

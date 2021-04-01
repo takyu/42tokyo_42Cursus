@@ -19,8 +19,6 @@ typedef struct	s_resolution
 	int		y;
 }				t_resolution;
 
-/*
-** analyze_resolution()
-*/
+void			analyze_resolution(t_resolution **r, char **ps);
 
 #endif

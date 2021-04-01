@@ -16,7 +16,6 @@
 /*
 ** Library header
 */
-
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -28,25 +27,26 @@
 /*
 ** minilbx
 */
-
 # include "mlx.h"
 
 /*
 ** Error header
 */
-
 # include "error.h"
 
 /*
 ** Check header
 */
-
 # include "check.h"
+
+/*
+** free header
+*/
+# include "free.h"
 
 /*
 ** Situation header
 */
-
 # include "resolution.h"
 # include "ambient_light.h"
 # include "camera.h"
@@ -55,7 +55,7 @@
 /*
 ** Object header
 */
-
+# include "object.h"
 # include "sphere.h"
 # include "plane.h"
 # include "square.h"
@@ -65,13 +65,13 @@
 /*
 ** Strucure of status
 */
-
 typedef struct	s_status
 {
 	t_resolution	*r;
 	t_ambient_light	*al;
 	t_camera		*c;
 	t_light			*l;
+	t_object		*obj;
 }				t_status;
 
 void			read_rt_file(char *name, t_status *status);

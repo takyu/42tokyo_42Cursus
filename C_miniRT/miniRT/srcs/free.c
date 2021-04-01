@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safe_free.c                                     :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 22:32:55 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/02/04 22:35:43 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/29 18:49:06 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/29 18:49:07 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "../includes/minirt.h"
 
-void	ft_safe_free(void **p)
+void	free_status(t_status *status)
 {
-	free(*p);
-	*p = NULL;
+	ft_safe_free((void **)status->r);
+	ft_safe_free((void **)status->al);
+	ft_safe_free((void **)status->c);
+	ft_safe_free((void **)status->l);
+	ft_safe_free((void **)status->obj);
 }

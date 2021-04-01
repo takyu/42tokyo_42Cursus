@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safe_free.c                                     :+:      :+:    :+:   */
+/*   resolution.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/04 22:32:55 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/02/04 22:35:43 by tnagoshi         ###   ########.fr       */
+/*   Created: 2021/03/29 15:55:28 by tnagoshi          #+#    #+#             */
+/*   Updated: 2021/03/29 15:55:30 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minirt.h"
 
-void	ft_safe_free(void **p)
+void	analyze_resolution(t_resolution **r, char **ps)
 {
-	free(*p);
-	*p = NULL;
+	ps++;
+	if (*r)
+		free_status_and_error_exit();
 }
