@@ -6,13 +6,13 @@
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 21:14:06 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/01/26 17:13:09 by tnagoshi         ###   ########.fr       */
+/*   Updated: 2021/06/10 15:58:00 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
@@ -30,7 +30,7 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }

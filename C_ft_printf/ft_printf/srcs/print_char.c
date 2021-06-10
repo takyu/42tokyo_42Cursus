@@ -6,13 +6,13 @@
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:09:39 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/01/26 17:37:02 by tnagoshi         ###   ########.fr       */
+/*   Updated: 2021/06/10 16:08:14 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_char(char c, t_status *status)
+int	print_char(char c, t_status *status)
 {
 	int		ret;
 

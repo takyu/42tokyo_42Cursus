@@ -6,13 +6,13 @@
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 08:04:54 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/01/30 22:28:52 by tnagoshi         ###   ########.fr       */
+/*   Updated: 2021/06/10 17:20:10 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		count_address_len(uintptr_t ad, int accuracy)
+int	count_address_len(uintptr_t ad, int accuracy)
 {
 	int		len;
 
@@ -32,26 +32,31 @@ int		count_address_len(uintptr_t ad, int accuracy)
 	return (len);
 }
 
-int		putnbr_u_int_ptr(uintptr_t ad)
+int	putnbr_u_int_ptr(uintptr_t ad)
 {
 	uintptr_t	div_ad;
 	int			mod_ad;
 	int			ret;
+	char		c;
 
 	ret = 0;
-	mod_ad = (ad % 16 > 9) ? (ad % 16 - 10 + 'a') : (ad % 16 + '0');
+	mod_ad = ad % 16;
+	if (mod_ad > 9)
+		c = mod_ad - 10 + 'a';
+	else
+		c = mod_ad + '0';
 	div_ad = ad / 16;
 	if (div_ad > 0)
 	{
 		ret += putnbr_u_int_ptr(div_ad);
-		ret += ft_putchar(mod_ad);
+		ret += ft_putchar(c);
 	}
 	else
-		ret = ft_putchar(mod_ad);
+		ret = ft_putchar(c);
 	return (ret);
 }
 
-int		count_space_len_ad(int ad_len, t_status *status)
+int	count_space_len_ad(int ad_len, t_status *status)
 {
 	int		len;
 
@@ -65,7 +70,7 @@ int		count_space_len_ad(int ad_len, t_status *status)
 	return (len);
 }
 
-int		case_zero_ac_and_ad(int space_len, int flag_minus)
+int	case_zero_ac_and_ad(int space_len, int flag_minus)
 {
 	int		ret;
 
@@ -83,7 +88,7 @@ int		case_zero_ac_and_ad(int space_len, int flag_minus)
 	return (ret);
 }
 
-int		print_address(uintptr_t ad, t_status *status)
+int	print_address(uintptr_t ad, t_status *status)
 {
 	int		ret;
 	int		ad_len;
@@ -106,6 +111,7 @@ int		print_address(uintptr_t ad, t_status *status)
 		ret += put_n_char('0', space_len);
 	ret += put_n_char('0', status->accuracy - ad_len + 2);
 	ret += putnbr_u_int_ptr(ad);
-	ret += (status->mark_minus == 1) ? put_n_char(' ', space_len) : 0;
+	if (status->mark_minus == 1)
+		ret += put_n_char(' ', space_len);
 	return (ret);
 }

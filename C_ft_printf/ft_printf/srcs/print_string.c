@@ -6,7 +6,7 @@
 /*   By: tnagoshi <tnagoshi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 22:09:59 by tnagoshi          #+#    #+#             */
-/*   Updated: 2021/01/30 16:33:14 by tnagoshi         ###   ########.fr       */
+/*   Updated: 2021/06/10 16:32:52 by tnagoshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char	*ft_strndup(const char *s, int len)
 	int		i;
 	char	*buf;
 
-	if (!(buf = (char *)malloc(len + 1)))
+	buf = (char *)malloc(len + 1);
+	if (!buf)
 		return (NULL);
 	i = 0;
 	while (i < len)
@@ -48,7 +49,7 @@ char	*ft_strndup(const char *s, int len)
 	return (buf);
 }
 
-int		count_len_str(char **s, t_status *status)
+int	count_len_str(char **s, t_status *status)
 {
 	char		*buf;
 	size_t		i;
@@ -85,7 +86,7 @@ void	ft_putstr(char *s)
 		write(1, s++, 1);
 }
 
-int		print_string(char *s, t_status *status)
+int	print_string(char *s, t_status *status)
 {
 	int		ret;
 	char	*print_str;
